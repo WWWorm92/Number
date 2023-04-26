@@ -15,7 +15,7 @@ if not os.path.exists('img'):
     os.makedirs('img')
 
 # Загрузите видео
-#video = cv2.VideoCapture("video/test2.mp4")
+#video = cv2.VideoCapture("rtsp://admin:1qazxsw2@192.168.1.4/doc/page/preview.asp")
 video = cv2.VideoCapture(0)
 
 # Загрузите классификатор Хаара для распознавания номеров автомобилей
@@ -53,6 +53,8 @@ while True:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
     # Отобразите кадр с прямоугольниками вокруг номеров
+    cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('frame', 1000, 800)
     cv2.imshow('frame', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
